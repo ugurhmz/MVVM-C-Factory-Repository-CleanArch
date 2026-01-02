@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HomeViewState {
+enum GeneralViewState {
     case loading
     case success
     case failure(String)
@@ -15,13 +15,14 @@ enum HomeViewState {
 
 @MainActor
 final class HomeViewModel: HomeViewModelProtocol {
+    
     weak var navigationDelegate: HomeNavigationDelegate?
     weak var viewDelegate: HomeViewModelDelegate?
     
-    private let repository: HomeRepositoryProtocol
+    private let repository: PostRepositoryProtocol
     private var posts = [PostResponse]()
     
-    init(repository: HomeRepositoryProtocol) {
+    init(repository: PostRepositoryProtocol) {
         self.repository = repository
     }
     
@@ -38,6 +39,11 @@ final class HomeViewModel: HomeViewModelProtocol {
             return nil
         }
         return posts[index]
+    }
+    
+    func didSelectRow(at index: Int) {
+        guard let post = item(at: index) else { return }
+        navigationDelegate?.navigateToDetail(postId: post.id)
     }
 }
 

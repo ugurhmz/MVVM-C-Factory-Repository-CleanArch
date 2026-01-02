@@ -7,6 +7,7 @@
 
 import Foundation
 
-protocol HomeRepositoryProtocol {
+protocol PostRepositoryProtocol {
     func getPosts() async -> Result<[PostResponse], NetworkError>
+    func getPostDetail(id: Int) async -> Result<PostResponse, NetworkError>
 }

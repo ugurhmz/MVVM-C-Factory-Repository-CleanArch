@@ -9,12 +9,12 @@ import Foundation
 
 @MainActor
 protocol HomeNavigationDelegate: AnyObject {
-    //  navigateToDetail
+    func navigateToDetail(postId: Int)
 }
 
 @MainActor
 protocol HomeViewModelDelegate: AnyObject {
-    func handleViewModelOutput(state: HomeViewState)
+    func handleViewModelOutput(state: GeneralViewState)
 }
 
 @MainActor
@@ -24,6 +24,7 @@ protocol HomeViewModelProtocol: AnyObject {
     
     func numberOfItems() -> Int
     func item(at index: Int) -> PostResponse?
+    func didSelectRow(at index: Int)
     
     func viewDidLoad()
 }

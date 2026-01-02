@@ -70,7 +70,7 @@ final class HomeViewController: UIViewController {
 
 // MARK: -
 extension HomeViewController: HomeViewModelDelegate {
-    func handleViewModelOutput(state: HomeViewState) {
+    func handleViewModelOutput(state: GeneralViewState) {
         switch state {
         case .loading:
             self.indicator.startAnimating()
@@ -110,6 +110,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Click: \(indexPath.row)")
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.didSelectRow(at: indexPath.row)
     }
 }

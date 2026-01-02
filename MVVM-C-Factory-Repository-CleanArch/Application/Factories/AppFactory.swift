@@ -10,6 +10,7 @@ import UIKit
 @MainActor
 protocol AppFactoryProtocol {
     func makeHomeViewController(coordinator: HomeNavigationDelegate) -> UIViewController
+    func makeDetailViewController(postId: Int) -> UIViewController
 }
 
 @MainActor
@@ -19,12 +20,22 @@ final class AppFactory: AppFactoryProtocol {
     init() {
         self.networkService = NetworkManager()
     }
-    
+}
+
+// MARK: - Make some VC
+extension AppFactory {
     func makeHomeViewController(coordinator: HomeNavigationDelegate) -> UIViewController {
-        let repository = HomeRepository(networkService: networkService)
+        let repository = PostRepository(networkService: networkService)
         let viewModel = HomeViewModel(repository: repository)
         viewModel.navigationDelegate = coordinator
         let controller = HomeViewController(viewModel: viewModel)
+        return controller
+    }
+    
+    func makeDetailViewController(postId: Int) -> UIViewController {
+        let repository = PostRepository(networkService: networkService)
+        let viewModel = DetailViewModel(postId: postId, repository: repository)
+        let controller = DetailViewController(viewModel: viewModel)
         return controller
     }
 }

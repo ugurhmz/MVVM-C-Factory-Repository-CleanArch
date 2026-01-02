@@ -27,4 +27,9 @@ final class HomeCoordinator: Coordinator {
 }
 
 // MARK: -
-extension HomeCoordinator: HomeNavigationDelegate { }
+extension HomeCoordinator: HomeNavigationDelegate {
+    func navigateToDetail(postId: Int) {
+        let detailVC = factory.makeDetailViewController(postId: postId)
+        navigationController.pushViewController(detailVC, animated: true)
+    }
+}
