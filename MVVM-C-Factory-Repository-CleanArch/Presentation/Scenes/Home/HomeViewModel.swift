@@ -47,6 +47,9 @@ extension HomeViewModel {
         viewDelegate?.handleViewModelOutput(state: .loading)
         
         Task {
+            
+            try? await Task.sleep(nanoseconds:  1 * 1_000_000_000)
+            
             let result = await repository.getPosts()
             
             switch result {

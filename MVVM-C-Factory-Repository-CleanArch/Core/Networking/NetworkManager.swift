@@ -33,8 +33,10 @@ final class NetworkManager: NetworkServiceProtocol {
         
         switch dataResponse.result {
         case .success(let data):
+            print("Success OK Ok OK")
             return .success(data)
         case .failure(let error):
+            print("ERR X X X")
             if let statusCode = dataResponse.response?.statusCode {
                 return .failure(.serverError(statusCode: statusCode))
             }
