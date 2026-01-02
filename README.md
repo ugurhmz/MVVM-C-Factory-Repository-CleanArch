@@ -1,7 +1,51 @@
+# Scalable iOS Architecture: MVVM-C + Factory + Repository
+
+![Swift](https://img.shields.io/badge/Swift-5.0+-orange.svg)
+![Platform](https://img.shields.io/badge/Platform-iOS-lightgrey.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+
+Bu proje, modern iOS uygulamalarında sıkça karşılaşılan **"Massive View Controller"**, **"Fat Coordinator"** ve **"Tight Coupling"** sorunlarına çözüm olarak geliştirilmiştir.
+
+Sıradan bir MVVM-C yapısının ötesine geçerek; **Factory Pattern** ile Dependency Injection yönetimini merkezi hale getirir ve **Repository Pattern** ile veri katmanını soyutlayarak sürdürülebilir bir mimari sunar.
+
+---
+
+## 🎯 Projenin Amacı
+
+Bir iOS projesinin mimari evrimini **3 aşamada simüle ederek**, neden **Factory** ve **Repository** yapılarının ölçeklenebilirlik için bir lüks değil, **zorunluluk** olduğunu kanıtlamaktır.
+
+Proje, mimari sorunları ve çözümleri şu evrim basamaklarıyla ele alır:
+
+1.  ❌ **Case 1 (MVVM-C + Adapter):** Tight Coupling ve Test Edilemezlik sorunları.
+2.  ❌ **Case 2 (MVVM-C + Adapter + Repository):** Fat Coordinator ve Dependency Hell sorunları.
+3.  ✅ **Case 3 (MVVM-C + Factory + Adapter + Repository):** Merkezi DI yönetimi, Loose Coupling ve Tam Test Edilebilirlik (Nihai Çözüm).
+
+---
+
+## 🛠 Kullanılan Teknolojiler & Prensipler
+
+Proje, endüstri standartlarına uygun modern iOS geliştirme pratikleriyle hazırlanmıştır.
+
+| Alan | Teknoloji / Prensip |
+| :--- | :--- |
+| **Architecture** | MVVM-C (Model-View-ViewModel-Coordinator) |
+| **UI** | UIKit (Programmatic - No Storyboard) |
+| **Design Patterns** | Factory, Repository, Adapter |
+| **Network** | Alamofire & Decodable (Generic Network Layer) |
+| **Concurrency** | Async/Await |
+| **Principles** | SOLID, DRY, Separation of Concerns |
+
+---
+
+
+<br>
+<br>
+
 # ❓ Neden Repository + Adapter Pattern yaninda Factory kullanmak zorunda kaldim
 <img width="1024" height="1236" alt="ChatGPT Image Jan 3, 2026, 01_09_33 AM" src="https://github.com/user-attachments/assets/0dae8193-8d8c-4c29-a218-773d0294cf5c" />
 
 <br>
+
 
 ## Folder Structure
 ```swift
