@@ -13,13 +13,13 @@ protocol DetailViewModelProtocol {
     var bodyText: String { get }
     var idText: String { get }
     
-    var viewDelegate: HomeViewModelDelegate? { get set }
+    var viewDelegate: ViewStateDelegate? { get set }
     func viewDidLoad()
 }
 
 @MainActor
 final class DetailViewModel: DetailViewModelProtocol {
-    weak var viewDelegate: HomeViewModelDelegate?
+    weak var viewDelegate: ViewStateDelegate?
     
     private let repository: PostRepositoryProtocol
     private let postId: Int

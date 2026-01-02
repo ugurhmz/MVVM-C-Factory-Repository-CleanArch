@@ -78,8 +78,8 @@ final class DetailViewController: UIViewController {
 }
 
 // MARK: -
-extension DetailViewController: HomeViewModelDelegate {
-    func handleViewModelOutput(state: GeneralViewState) {
+extension DetailViewController: ViewStateDelegate {
+    func handleViewModelOutput(state: ViewState) {
         switch state {
         case .loading:
             indicator.startAnimating()

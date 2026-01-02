@@ -7,17 +7,11 @@
 
 import Foundation
 
-enum GeneralViewState {
-    case loading
-    case success
-    case failure(String)
-}
-
 @MainActor
 final class HomeViewModel: HomeViewModelProtocol {
     
     weak var navigationDelegate: HomeNavigationDelegate?
-    weak var viewDelegate: HomeViewModelDelegate?
+    weak var viewDelegate: ViewStateDelegate?
     
     private let repository: PostRepositoryProtocol
     private var posts = [PostResponse]()
@@ -53,7 +47,6 @@ extension HomeViewModel {
         viewDelegate?.handleViewModelOutput(state: .loading)
     
         Task {
-            try? await Task.sleep(nanoseconds:  1 * 1_000_000_000)
             let result = await repository.getPosts()
             
             switch result {

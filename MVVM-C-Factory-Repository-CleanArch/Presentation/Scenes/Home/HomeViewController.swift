@@ -69,8 +69,8 @@ final class HomeViewController: UIViewController {
 }
 
 // MARK: -
-extension HomeViewController: HomeViewModelDelegate {
-    func handleViewModelOutput(state: GeneralViewState) {
+extension HomeViewController: ViewStateDelegate {
+    func handleViewModelOutput(state: ViewState) {
         switch state {
         case .loading:
             self.indicator.startAnimating()
