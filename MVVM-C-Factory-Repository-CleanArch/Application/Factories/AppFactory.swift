@@ -14,9 +14,15 @@ protocol AppFactoryProtocol {
 
 @MainActor
 final class AppFactory: AppFactoryProtocol {
-    init() { }
+    
+    private let networkService: NetworkServiceProtocol
+    
+    init() {
+        self.networkService = NetworkManager()
+    }
     
     func makeHomeViewController(coordinator: HomeNavigationDelegate) -> UIViewController {
+        let repository = HomeRepository(networkService: networkService)
         let viewModel = HomeViewModel()
         viewModel.navigationDelegate = coordinator
         let controller = HomeViewController(viewModel: viewModel)
